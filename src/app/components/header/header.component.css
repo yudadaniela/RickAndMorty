@@ -1,0 +1,12 @@
+header{
+    text-align: center;
+}
+h1{
+    color:blueviolet;
+    align-items: center;
+    font-size:xx-large;
+    font-family: cursive;
+}
+ul{
+    list-style-type: none;
+}

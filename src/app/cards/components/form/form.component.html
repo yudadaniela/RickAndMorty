@@ -1,0 +1,31 @@
+<form [formGroup]="characterForm">
+  <div class="form-input">
+    <label for="name">Name:</label>
+  <input id="name" type="text" formControlName="name" />
+  </div>
+  <div class="required" *ngIf="characterForm.get('name')?.hasError('required')">
+    Name is required
+  </div>
+  <div class="required" *ngIf="characterForm.controls['name'].hasError('maxlength')">
+    Name cannot exceed 100 characters
+  </div>
+  <label for="state">State:</label>
+  <input id="state" type="text" formControlName="state" />
+  <div class="required" *ngIf="characterForm.get('state')?.hasError('required')">
+    State is required
+  </div>
+  <div class="required" *ngIf="characterForm.controls['state'].hasError('maxlength')">
+    State cannot exceed 100 characters
+  </div>
+  <label for="gender">Gender:</label>
+  <input id="gender" type="text" formControlName="gender" />
+  <div class="required" *ngIf="characterForm.get('gender')?.hasError('required')">
+    Gender is required
+  </div>
+  <label for="image">Image:</label>
+  <input id="image" type="text" formControlName="image" />
+  <div class="required" *ngIf="characterForm.get('image')?.hasError('required')">
+    Image is required
+  </div>
+  <button >send</button>
+</form>
