@@ -40,7 +40,7 @@
         Gender is required
       </div>
       <label for="image"><strong> Image:</strong></label>
-      <input id="image" type="file" formControlName="image" />
+      <input id="image" type="file" formControlName="image" (change)="imageUpLoad($event)"/>
       <div
         class="required"
         *ngIf="characterForm.get('image')?.hasError('required')"
