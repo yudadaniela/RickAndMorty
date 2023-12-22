@@ -1,31 +1,59 @@
-<form [formGroup]="characterForm">
-  <div class="form-input">
-    <label for="name">Name:</label>
-  <input id="name" type="text" formControlName="name" />
+<div class="body">
+  <div class="container">
+    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+      <div class="form-input">
+        <label for="name"><strong>Name:</strong></label>
+        <input id="name" type="text" formControlName="name" />
+      </div>
+      <div
+        class="required"
+        *ngIf="characterForm.get('name')?.hasError('required')"
+      >
+        Name is required
+      </div>
+      <div
+        class="required"
+        *ngIf="characterForm.controls['name'].hasError('maxlength')"
+      >
+        Name cannot exceed 100 characters
+      </div>
+      <label for="status"><strong>State:</strong></label>
+      <input id="status" type="text" formControlName="status" />
+      <div
+        class="required"
+        *ngIf="characterForm.get('status')?.hasError('required')"
+      >
+        State is required
+      </div>
+      <div
+        class="required"
+        *ngIf="characterForm.controls['status'].hasError('maxlength')"
+      >
+        State cannot exceed 100 characters
+      </div>
+      <label for="gender"><strong>Gender:</strong></label>
+      <input id="gender" type="text" formControlName="gender" />
+      <div
+        class="required"
+        *ngIf="characterForm.get('gender')?.hasError('required')"
+      >
+        Gender is required
+      </div>
+      <label for="image"><strong> Image:</strong></label>
+      <input id="image" type="file" formControlName="image" />
+      <div
+        class="required"
+        *ngIf="characterForm.get('image')?.hasError('required')"
+      >
+        Image is required
+      </div>
+       <div
+        class="required"
+        *ngIf="characterForm.getError('image')?.hasError('imageSizeValidator')"
+      >
+        Image weight more that 2GB
+      </div>
+      <button type="submit">send</button>
+    </form>
   </div>
-  <div class="required" *ngIf="characterForm.get('name')?.hasError('required')">
-    Name is required
-  </div>
-  <div class="required" *ngIf="characterForm.controls['name'].hasError('maxlength')">
-    Name cannot exceed 100 characters
-  </div>
-  <label for="state">State:</label>
-  <input id="state" type="text" formControlName="state" />
-  <div class="required" *ngIf="characterForm.get('state')?.hasError('required')">
-    State is required
-  </div>
-  <div class="required" *ngIf="characterForm.controls['state'].hasError('maxlength')">
-    State cannot exceed 100 characters
-  </div>
-  <label for="gender">Gender:</label>
-  <input id="gender" type="text" formControlName="gender" />
-  <div class="required" *ngIf="characterForm.get('gender')?.hasError('required')">
-    Gender is required
-  </div>
-  <label for="image">Image:</label>
-  <input id="image" type="text" formControlName="image" />
-  <div class="required" *ngIf="characterForm.get('image')?.hasError('required')">
-    Image is required
-  </div>
-  <button >send</button>
-</form>
+</div>

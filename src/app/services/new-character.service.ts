@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Character } from '../interfaces/card-ricky';
+import { Character, Result } from '../interfaces/card-ricky';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewCharacterService {
-  private character:Character[]=[];
+  private character:Result={
+    id:       1000,
+    name:     '',
+    status:   '',
+    gender:   '',
+    image:    '',
+   
+  };
 
 
   getCharacter(){
    return this.character 
   }
-  setCharacter(data:Character){
-  //return this.character=data
+  setCharacter(newCharacter:Result):Observable<Result>{
+    this.character=newCharacter
+    return of(this.character )
   }
 }

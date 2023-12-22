@@ -1,7 +1,8 @@
-<div *ngIf="data">
-    <img [src]="data.image" alt="">
-    <h2>{{data.name }}</h2>
-    <h3>{{data.status}}</h3>
-    <h4>{{data.status}}</h4>
+<div class="container">
+  <div class="data" *ngIf="data">
+    <h2>{{ data?.name }}</h2>
+    <img [src]="data?.image" alt="" />
+    <h3>{{ data?.status }}</h3>
+    <h4>{{ data?.gender }}</h4>
+  </div>
 </div>
-

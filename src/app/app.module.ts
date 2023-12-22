@@ -11,6 +11,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FormComponent } from './cards/components/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DescriptionComponent,
     HeaderComponent,
     PaginationComponent,
-    FormComponent
+    FormComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

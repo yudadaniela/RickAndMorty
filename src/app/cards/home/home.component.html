@@ -3,14 +3,13 @@
     <a routerLink="/description/{{ datum.id }}"
       ><h2>{{ datum.name }}</h2></a
     >
+    <img [src]="datum.image" alt="" />
     <h3>{{ datum.status }}</h3>
     <h4>{{ datum.gender }}</h4>
-    <img [src]="datum.image" alt="" />
   </div>
   <app-pagination
   [currentPage]="currentPage"
   [totalPages]="totalPages"
   (pageChange)="onPageChange($event)">
-
   </app-pagination>
 </div>

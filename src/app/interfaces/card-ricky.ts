@@ -18,15 +18,15 @@ export interface Character{
 export interface Result {
     id:       number;
     name:     string;
-    status:   Status;
-    species:  Species;
-    type:     string;
+    status:   string;
+    species?:  Species;
+    type?:     string;
     gender:   string;
     origin?:   Location;
     location?: Location;
     image:    string;
-    episode:  string[];
-    url:      string;
+    episode?:  string[];
+    url?:      string;
     created?:  Date;
 }
 
