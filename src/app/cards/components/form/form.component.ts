@@ -9,6 +9,7 @@ import {
 import { NewCharacterService } from '../../../services/new-character.service';
 import { Router } from "@angular/router";
 import { Validator } from "../validator";
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-form',
@@ -35,9 +36,33 @@ export class FormComponent {
         Validators.compose([Validators.required, Validators.maxLength(100)]),
       ],
       gender: ['', Validators.required],
-      image: ['', Validators.required, Validator.imageSizeValidator],
+      image: [null, [Validators.required], [Validator.imageSizeValidator]],
     });
   }
+  imageUpLoad(event:any):void{
+    //usando los valores del navegador, event.target pendiente del Dom,  
+    const file:File | null =((event.target as HTMLInputElement).files?.[0]) || null;
+    //-----transformacion de ficheros a dato binario ----------------------
+    // const reading:FileReader= new FileReader
+    // reading.onload=()=>{
+    //   // array buffer ES UN OBJETO DE JS QUE REPRESENTA UN BUFFER DE MEMORIA 
+    //   //memoria temporal que se abre para contener datos 
+    //   const binaryData:ArrayBuffer | string |null= reading.result;
+    //   this.characterForm.get('image')?.setValue(binaryData);
+    // }
+    
+    // reading.readAsArrayBuffer(file)
+
+    if (file){
+      this.characterForm.patchValue({image:File})
+      this.characterForm.get('image')?.updateValueAndValidity();
+    }
+
+
+
+  }
+
+
 
   //AbstractControl sirve como base para los controles de  formularios, conjunto de funcionalidades compartidas para trabajar con formularios
   // imageSizeValidator(
@@ -62,7 +87,10 @@ export class FormComponent {
       
       this.router.navigate(['/description/1000'])
     })
-   
-   
+   const imageControl=this.characterForm.get('image')
+   if (imageControl && imageControl.value){
+     const formData= new FormData();
+     formData.append('image',imageControl.value)
+   }
   }
 }
